@@ -57,6 +57,79 @@ def modul():
     
     return jsonify({"status": "error"})
 
+# ==================== Reference & Template Endpoints ====================
+
+@app.route('/api/reference/cp-fase', methods=['GET'])
+def reference_cp_fase():
+    """Return CP-per-phase reference JSON (docs/cp_fase_2026.json).
+    This provides a structured summary of Fase A–E untuk Kurikulum 2026.
+    """
+    try:
+        with open('docs/cp_fase_2026.json', 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        return jsonify({"status": "success", "data": data})
+    except FileNotFoundError:
+        return jsonify({"status": "error", "message": "Reference file not found. Please ensure docs/cp_fase_2026.json exists."}), 404
+
+@app.route('/api/templates/prota', methods=['GET'])
+def template_prota():
+    """Return a JSON template for Prota (Program Tahunan) to be used by the front-end or for export tests."""
+    template = {
+        "identitas": {
+            "nama_sekolah": "",
+            "alamat": "",
+            "kota": "",
+            "provinsi": "",
+            "mata_pelajaran": "",
+            "kelas": "",
+            "tahun_ajaran": "",
+            "nama_guru": "",
+            "nip": ""
+        },
+        "profil_pelajar_pancasila": [],
+        "pembelajaran": [
+            {"elemen": "", "cp": "", "jam": 0, "p5": ""}
+        ],
+        "proyek_p5": {"tema": "", "alokasi_jam": 0, "dimensi_p5": "", "output": ""},
+        "keterangan": ""
+    }
+    return jsonify({"status": "success", "template": template})
+
+@app.route('/api/templates/promes', methods=['GET'])
+def template_promes():
+    template = {
+        "identitas": {
+            "nama_sekolah": "",
+            "mata_pelajaran": "",
+            "kelas": "",
+            "semester": "",
+            "tahun_ajaran": ""
+        },
+        "minggu": [
+            {"minggu_ke": 1, "tanggal": "", "tujuan": "", "materi": "", "kegiatan": "", "jp": 0, "penilaian": "", "sumber": "", "keterangan": ""}
+        ]
+    }
+    return jsonify({"status": "success", "template": template})
+
+@app.route('/api/templates/modul', methods=['GET'])
+def template_modul():
+    template = {
+        "identitas": {"judul_modul": "", "nama_penyusun": "", "sekolah": "", "kelas": "", "mata_pelajaran": "", "alokasi_waktu": ""},
+        "capaian_pembelajaran": "",
+        "tujuan_pembelajaran": "",
+        "pemahaman_konsep": "",
+        "pemahaman_relevansi": "",
+        "pertanyaan_pemantik": "",
+        "kegiatan_pembelajaran": "",
+        "penguatan_p5": "",
+        "penilaian_formatif": "",
+        "penilaian_sumatif": "",
+        "refleksi": "",
+        "lkpd": "",
+        "sumber_belajar": ""
+    }
+    return jsonify({"status": "success", "template": template})
+
 # ==================== EXPORT FUNCTIONS ====================
 
 @app.route('/api/export/prota-word-2026', methods=['POST'])
