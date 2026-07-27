@@ -1,0 +1,23 @@
+{
+  "nama_sekolah": "SMA Contoh Negeri",
+  "alamat": "Jl. Merdeka No.1",
+  "kota": "Kota Contoh",
+  "provinsi": "Provinsi X",
+  "mata_pelajaran": "Biologi",
+  "kelas": "X IPA",
+  "tahun_ajaran": "2026/2027",
+  "nama_guru": "Dr. Siti",
+  "nip": "1975123412341234",
+  "profil_pelajar_pancasila": [
+    "Beriman dan Taqwa",
+    "Bertanggung jawab",
+    "Kreatif"
+  ],
+  "pembelajaran": [
+    {"elemen": "Sel dan Jaringan", "cp": "Menjelaskan struktur sel", "jam": 8, "p5": "Kreatif"},
+    {"elemen": "Transpor Membran", "cp": "Mendeskripsikan mekanisme transpor", "jam": 6, "p5": "Kritis"}
+  ],
+  "proyek_p5": {"tema": "Proyek Observasi Ekosistem Sekolah", "alokasi_jam": 4, "dimensi_p5": "Kerjasama", "output": "Poster"},
+  "keterangan": "Adaptasi ke kalender akademik setempat",
+  "nip_kepsek": "196701011990011001"
+}
